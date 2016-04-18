@@ -8,6 +8,7 @@ from HW5_CMM import GWBPsimulator
 import matplotlib
 matplotlib.use("Pdf")
 import matplotlib.pyplot as plt
+from time import clock
 class GWBPsimulator2(GWBPsimulator):
 
     def __init__(self,N_initial, prob_die, NO_generation, NO_cell_type,cancer_size):
@@ -40,7 +41,8 @@ class GWBPsimulator2(GWBPsimulator):
 
     def cancer_incidence(self):
         for i in range(0, self.num_simulation):
-            cancer_occur = self.population_size[:,i+1]> self.cancer_size
+            population = self.pop_size_multi_simulation[i]
+            cancer_occur = population[1,:]> self.cancer_size
             if np.sum(cancer_occur) >=1:
                 first_cancer_generation = [i for i, x in enumerate(cancer_occur) if x][0]
             else:
@@ -58,7 +60,9 @@ class GWBPsimulator2(GWBPsimulator):
         plt.savefig('cancer_incidence.pdf')
 # self_testing code
 if __name__ == '__main__':
+    start_time = clock()
     prob_death = [[100/float(201),1/float(5000)],20/float(41)]
     GWBP = GWBPsimulator2(N_initial=[100,0],prob_die=prob_death,NO_generation=500,NO_cell_type=2,cancer_size=math.pow(10,6))
-    GWBP.simulate_multiple(2000)
+    GWBP.simulate_multiple(100)
     GWBP.cancer_incidence()
+    print 'running time(seconds):', clock() - start_time
