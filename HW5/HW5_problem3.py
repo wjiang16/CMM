@@ -63,6 +63,6 @@ if __name__ == '__main__':
     start_time = clock()
     prob_death = [[100/float(201),1/float(5000)],20/float(41)]
     GWBP = GWBPsimulator2(N_initial=[100,0],prob_die=prob_death,NO_generation=500,NO_cell_type=2,cancer_size=math.pow(10,6))
-    GWBP.simulate_multiple(100)
+    GWBP.simulate_multiple(5000)
     GWBP.cancer_incidence()
     print 'running time(seconds):', clock() - start_time
