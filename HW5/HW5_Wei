@@ -1,0 +1,44 @@
+CMM HW5
+Author: Wei Jiang
+Date: April 17th, 2016
+
+Problem 1
+(a)
+The analytic expression of the expected value of the size of population at
+generation t, i.e., E(N(t)) = u^t.
+u = E(X) = 0*0.5 + 0.5*2 = 1
+So E(N(t)) = 1 for all t.
+This result matches with the simulated results.
+
+(b)
+The probability of extinction of the 1000 population is 0.998.
+For t = infinity, the probability of extinction of the 1000 population is 1 from simulation.
+
+(c)
+The probability of extinction q_t+1 = G(q_t) with q_0 = 0
+and G(z) = E(z^X).
+We can compute the q_t using the above recursive equation.
+Then p(N(t)>0) = 1 - p(N(t) = 0).
+
+(d)
+The probability of extinction from simulation for the 15th generation is 0.8975.
+The probability from analytic expression is 0.8986.
+They are very close.
+
+Problem 2.
+(a) u = E(X) = 21/41*2 = 42/41
+E(N(14)) = u^14 = 1.4013
+The simulated result is 1.4048. So the analytic result matches with simulation.
+
+(b)-(d)
+The probability of extinction from simulation for the 15th generation is 0.8642.
+The probability from analytic expression is 0.8754.
+They are very close.
+
+Solve q = G(q) for q. q = E(q^X) = 1*20/41 + 21/41*q^2. We obtain q = 20/21
+E(N(t)|N(t)>0) \approx u^t/(1-q) = 21*(42/41)^t
+When t goes to infinity, E(N(t)|N(t)>0) also goes to infinity.
+This result matches with the simulation result.
+
+Problem 3
+Please see code and figures.
