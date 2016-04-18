@@ -40,7 +40,7 @@ class GWBPsimulator2(GWBPsimulator):
 
     def cancer_incidence(self):
         for i in range(0, self.num_simulation):
-            cancer_occur = self.population_size[i,:]> self.cancer_size
+            cancer_occur = self.population_size[:,i+1]> self.cancer_size
             if np.sum(cancer_occur) >=1:
                 first_cancer_generation = [i for i, x in enumerate(cancer_occur) if x][0]
             else:
